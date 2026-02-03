@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>More About Me | Sanjeevan S</title>
+  <style>
+    :root {
+      --black-gradient: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+      --gold: #f9c646;
+      --purple: #9b59b6;
+      --text-light: #f1f1f1;
+      --bg-dark: #111111;
+      --card-bg: #1b1b1b;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--black-gradient);
+      color: var(--text-light);
+      scroll-behavior: smooth;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--purple);
+    }
+
+    header {
+        s=
+      background: var(--black-gradient);
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gold);
+    }
+
+
+    .toggle-btn {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: var(--purple);
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--purple);
+      z-index: 999;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--purple);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px var(--purple);
+    }
+
+    .card h2 {
+      color: var(--gold);
+      border-bottom: 1px solid var(--purple);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: var(--gold);
+    }
+
+    a {
+      color: var(--purple);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    body.light-mode {
+      --black-gradient: #fffbe6;
+      --card-bg: #fffaf2;
+      --text-light: #222222;
+    }
+    .bg{
+        padding-top: 0%;
+        padding-left: 0%;
+        margin-top: 0%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="details.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="r.html">Reviews</a>
+    <a href="details.html">Details</a>
+
+  </nav>
+
+  <!-- Theme Toggle Button -->
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <!-- Header -->
+  <header>
+
+    <h1>More About Me</h1>
+    <p>Explore my background, skills, and personality beyond the portfolio.</p>
+  </header>
+
+  <!-- Cards Section -->
+  <section id="about">
+ 
+    <div class="card">
+      <h2>👋 Introduction</h2>
+      <p>I’m <strong>Sanjeevan S</strong>, a passionate <strong>DevOps enthusiast</strong> specializing in <strong>AWS</strong>, <strong>Terraform</strong>, and cloud automation. I love crafting efficient infrastructures and exploring UI design and cloud-based solutions.</p>
+    </div>
+
+    <div class="card">
+      <h2>🎓 Education</h2>
+      <p><strong>Degree:</strong> BCA in Cloud Computing</p>
+      <p><strong>College:</strong> Kristu Jayanti College, Bangalore</p>
+      <p><strong>Graduation Year:</strong> 2026</p>
+    </div>
+
+    <div class="card">
+      <h2>🛠️ Skills & Interests</h2>
+      <p><strong>DevOps Tools:</strong> AWS, Terraform, Git, Docker, CI/CD</p>
+      <p><strong>Languages:</strong> HTML, CSS, JavaScript, Python</p>
+      <p><strong>Interests:</strong> Automation, UI Design, Cloud Infrastructure, Open Source</p>
+    </div>
+
+    <div class="card">
+      <h2>👤 Personal Details</h2>
+      <p><strong>Date of Birth:</strong> 15th August 2004</p>
+      <p><strong>Hobbies:</strong> Coding, Gaming, Music, Designing</p>
+      <p><strong>Languages Known:</strong> English, Kannada, Hindi</p>
+    </div>
+
+    <div class="card">
+      <h2>🔗 Connect With Me</h2>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sanjeevan-s-a87826316/" target="_blank">sanjeevan-s-a87826316</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/Sanjeevan-17" target="_blank">Sanjeevan-17</a></p>
+    </div>
+
+    <a href="final1.html">← Back to Home</a>
+  </section>
+
+  <!-- Script -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+
+</body>
+</html>

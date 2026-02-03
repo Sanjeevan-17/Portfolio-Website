@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found | Sanjeevan S</title>
+  <style>
+    :root {
+      --black-gradient: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+      --gold: #f9c646;
+      --purple: #9b59b6;
+      --text-light: #f1f1f1;
+      --bg-dark: #111111;
+      --card-bg: #1b1b1b;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--black-gradient);
+      color: var(--text-light);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .error-container {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px var(--purple);
+      max-width: 500px;
+    }
+
+    h1 {
+      font-size: 6rem;
+      margin: 0;
+      color: var(--gold);
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 2rem;
+      color: var(--purple);
+    }
+
+    p {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: var(--text-light);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--gold);
+      font-weight: bold;
+      padding: 10px 20px;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    a:hover {
+      background: var(--purple);
+      color: white;
+      border-color: var(--purple);
+    }
+
+    .glow {
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px var(--purple), 0 0 20px var(--purple);
+      }
+      to {
+        text-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1 class="glow">404</h1>
+    <h2>Oops! Page Not Found</h2>
+    <p>The page you're looking for doesn’t exist or has been moved.</p>
+    <a href="index.html">← Back to Home</a>
+  </div>
+</body>
+</html>

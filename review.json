@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Anjali K.",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "rating": 5,
+      "summary": "Exceptional work and attention to detail.",
+      "full": "Sanjeevan is an amazing developer. The project was delivered ahead of schedule and far exceeded expectations."
+    },
+    {
+      "name": "Karthik M.",
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "rating": 4,
+      "summary": "Clean code and strong communication.",
+      "full": "Working with him was a breeze. Always kept me updated and implemented feedback rapidly."
+    },
+    {
+      "name": "Riya S.",
+      "avatar": "https://i.pravatar.cc/150?img=15",
+      "rating": 5,
+      "summary": "Highly recommend for frontend work.",
+      "full": "He delivered a stunning UI for our product. Pixel-perfect design, smooth animations, and fast performance."
+    }
+  ]
+  

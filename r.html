@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews | Sanjeevan S</title>
+  <style>
+    :root {
+      --black-gradient: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+      --gold: #f9c646;
+      --purple: #9b59b6;
+      --text-light: #f1f1f1;
+      --card-bg: #1b1b1b;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--black-gradient);
+      color: var(--text-light);
+      scroll-behavior: smooth;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--purple);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: var(--purple);
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--purple);
+      z-index: 999;
+    }
+
+    header {
+      position: relative;
+      height: 42vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+      background-color: black;
+      color: var(--gold);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+      transition: background 0.5s ease;
+    }
+
+    body.light-mode header::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7));
+    }
+
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    header * {
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--purple);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px var(--purple);
+    }
+
+    .card h2 {
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--card-bg);
+      color: var(--text-light);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      z-index: 2000;
+      width: 80%;
+      max-width: 600px;
+      border: 2px solid var(--purple);
+    }
+
+    .popup h3 {
+      color: var(--gold);
+    }
+
+    .popup button {
+      margin-top: 20px;
+      background: var(--purple);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      z-index: 1500;
+    }
+
+    body.light-mode {
+      --black-gradient: #fffbe6;
+      --card-bg: #fffaf2;
+      --text-light: #222222;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="details.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="r.html">Reviews</a>
+    <a href="details.html">Details</a>
+  </nav>
+
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <header>
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="background1.mp4" type="video/mp4" />
+    </video>
+    <h1>Client & Peer Reviews</h1>
+    <p>What others say about working with me.</p>
+  </header>
+<section>
+  <section id="reviews">
+    <div class="card-container">
+      <div class="card" onclick="showPopup('review1')">
+        <h2>John Doe</h2>
+        <p>"Incredible work! Delivered the cloud setup ahead of time with perfect documentation."</p>
+      </div>
+    </div>
+  </section>
+  <section>
+      <div class="card" onclick="showPopup('review2')">
+        <h2>Jane Smith</h2>
+        <p>"His portfolio site is elegant, fast, and responsive. I was seriously impressed!"</p>
+      </div>
+    </div>
+      </section>
+    <section>
+      <div class="card" onclick="showPopup('review3')">
+        <h2>Arun Kumar</h2>
+        <p>"He automated our AWS workflow using Terraform and GitHub Actions seamlessly."</p>
+      </div>
+    </div>
+   
+  </section>
+   <a href="index.html">← Back to Home</a>
+</section>
+
+  <!-- Popups -->
+  <div id="review1" class="popup">
+    <h3>John Doe</h3>
+    <p>“Sanjeevan handled our DevOps needs like a pro. Clean Terraform code, secure infrastructure, and well-organized CI/CD. Highly recommend him for any cloud work.”</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="review2" class="popup">
+    <h3>Jane Smith</h3>
+    <p>“He truly understands user experience. The transitions, animations, and responsive layout on his portfolio are next level.”</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="review3" class="popup">
+    <h3>Arun Kumar</h3>
+    <p>“Thanks to Sanjeevan, our team now has a robust automated pipeline that saves hours each week. Great communicator and very reliable.”</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    function showPopup(id) {
+      document.getElementById(id).style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

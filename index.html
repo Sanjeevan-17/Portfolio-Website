@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanjeevan S | Portfolio</title>
+  <style>
+    :root {
+      --black-gradient: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+      --gold: #f9c646;
+      --purple: #9b59b6;
+      --text-light: #f1f1f1;
+      --bg-dark: #111111;
+      --card-bg: #1b1b1b;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--black-gradient);
+      color: var(--text-light);
+      scroll-behavior: smooth;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--purple);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      background: var(--black-gradient);
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gold);
+      animation: fadeInDown 1s ease-in;
+      z-index: 1;
+    }
+
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    header * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--purple);
+      box-shadow: 0 0 20px var(--purple);
+      margin-bottom: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.1) rotate(3deg);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: var(--gold);
+    }
+
+    #typed-text {
+      font-size: 1.2rem;
+      color: var(--purple);
+      min-height: 30px;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      background: var(--purple);
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--purple);
+      z-index: 999;
+    }
+
+    .theme-toggle {
+      top: 60px;
+      right: 20px;
+    }
+
+    .resume-btn {
+      top: 60px;
+      left: 20px;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    .projects, .reviews, .about {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      animation: fadeInUp 1s ease-in;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--purple);
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px var(--purple);
+    }
+
+    .card h3 {
+      color: var(--gold);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: var(--bg-dark);
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 600px;
+      box-shadow: 0 6px 30px var(--purple);
+      color: var(--text-light);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: var(--gold);
+    }
+
+    a {
+      color: var(--purple);
+    }
+
+    strong {
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="details.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="r.html">Reviews</a>
+    <a href="details.html">Details</a>
+    
+  </nav>
+
+  <button class="toggle-btn resume-btn" onclick="openModal('resumeModal')">View Resume</button>
+  <button class="toggle-btn theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <header>
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="background1.mp4" type="video/mp4" />
+    </video>
+    <img src="profile.png" alt="Profile Picture" class="profile-img">
+    <h1>Sanjeevan S</h1>
+    <p id="typed-text"></p>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card" onclick="openModal('aboutModal')">
+      <h3>Click to Learn More</h3>
+      <p>Get a deeper insight into who I am and what drives me.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="card" onclick="openModal('projectModal1')">
+        <h3>DevOps Project</h3>
+        <p>Hosting a website using Terraform + AWS S3 with style and automation.</p>
+      </div>
+      <div class="card" onclick="openModal('projectModal2')">
+        <h3>Portfolio Site</h3>
+        <p>Showcasing my personal brand and technical skills with elegance.</p>
+      </div>
+      <div class="card" onclick="openModal('projectModal3')">
+        <h3>Weather App</h3>
+        <p>React UI that fetches real-time data from OpenWeather API.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>Reviews</h2>
+    <div class="reviews">
+      <div class="card">
+        <p>“John’s work is always top-notch. Great attention to detail!”</p>
+        <strong>- Sarah M., Product Manager</strong>
+      </div>
+      <div class="card">
+        <p>“Fast, responsive, and creative. Would hire again.”</p>
+        <strong>- Mike R., Startup Founder</strong>
+      </div>
+      <div class="card">
+        <p>“Amazing frontend skills. Delivered exactly what we needed.”</p>
+        <strong>- Anna T., Designer</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Modal -->
+  <div id="resumeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('resumeModal')">&times;</span>
+      <h2>My Resume</h2>
+      <iframe src="resume.pdf" width="100%" height="500px" style="border: none;"></iframe>
+      <a href="resume.pdf" download>Download PDF</a>
+    </div>
+  </div>
+  
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+      <h2>About Me</h2>
+      <p>Hi, I'm <strong>Sanjeevan S</strong> — a passionate <strong>DevOps Architect</strong> with a focus on building scalable, automated cloud infrastructure using tools like <strong>AWS</strong> and <strong>Terraform</strong>.</p>
+      <p>I specialize in creating robust CI/CD pipelines, containerized environments, and infrastructure-as-code setups that empower development teams to move fast and stay reliable.</p>
+      <p>While backend automation is my core strength, I also enjoy crafting sleek and responsive UIs — bridging the gap between infrastructure and user experience.</p>
+      <p><strong>Outside of work?</strong> You'll find me experimenting with new tech, building passion projects, or designing minimal portfolio websites like this one.</p>
+
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sanjeevan-s-a87826316/" target="_blank">Connect with me</a></p>
+      <a href="details.html" class="more-info-btn">View More Details →</a>
+    </div>
+  </div>
+  <!-- Details Modal -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('detailsModal')">&times;</span>
+      <h2>Extra Details</h2>
+      <p>Currently pursuing BCA in Cloud Computing at Kristu Jayanti College, Bangalore.</p>
+      <p>Skills include CI/CD, Docker, GitHub Actions, and frontend libraries like React.</p>
+      <p>I'm actively learning Kubernetes and exploring platform engineering concepts.</p>
+    </div>
+  </div>
+
+  <!-- Project Modals -->
+  <div id="projectModal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('projectModal1')">&times;</span>
+      <h2>DevOps Project</h2>
+      <p>Hosting a site on AWS using S3, Route 53, and Terraform IaC.</p>
+      <p><strong>Stack:</strong> AWS, Terraform, HTML/CSS</p>
+      <p><a href="https://github.com/Sanjeevan-17/My_Project1" target="_blank">View GitHub</a></p>
+    </div>
+  </div>
+
+  <div id="projectModal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('projectModal2')">&times;</span>
+      <h2>Portfolio Site</h2>
+      <p>Personal branding portfolio made with HTML, CSS, and JavaScript.</p>
+      <p><a href="https://github.com/Sanjeevan-17/My_Project2" target="_blank">View GitHub</a></p>
+    </div>
+  </div>
+
+  <div id="projectModal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('projectModal3')">&times;</span>
+      <h2>Weather App</h2>
+      <p>Weather app that shows city-based real-time data using OpenWeather API.</p>
+      <p><strong>Stack:</strong> React, JS, API</p>
+    </div>
+  </div>
+  <button onclick="scrollToTop()" id="scrollTopBtn" class="toggle-btn" style="bottom: 20px; right: 20px; top: auto; display: none;">↑ Top</button>
+
+  <script>
+    const roles = ["DevOps Architect Cloud Enthusiast", "AWS + Terraform Expert Minimal UI Crafter"];
+    let i = 0, j = 0, isDeleting = false;
+    const speed = 100;
+
+    function type() {
+      const text = roles[i];
+      const target = document.getElementById("typed-text");
+
+      if (!isDeleting && j <= text.length) {
+        target.textContent = text.substring(0, j++);
+      } else if (isDeleting && j >= 0) {
+        target.textContent = text.substring(0, j--);
+      }
+
+      if (!isDeleting && j === text.length + 1) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+        return;
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % roles.length;
+      }
+
+      setTimeout(type, isDeleting ? speed / 2 : speed);
+    }
+    type();
+
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    window.onclick = function(e) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) modal.style.display = 'none';
+      });
+    }
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        document.querySelectorAll(".modal").forEach(modal => {
+          modal.style.display = "none";
+        });
+      }
+    });
+    const topBtn = document.getElementById("scrollTopBtn");
+
+    window.onscroll = () => {
+      topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+  
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('light-mode');
+      if (body.classList.contains('light-mode')) {
+        document.documentElement.style.setProperty('--black-gradient', '#fdf5e6');
+        document.documentElement.style.setProperty('--text-light', '#4B0082');
+        document.documentElement.style.setProperty('--bg-dark', '#fdf5e6');
+        document.documentElement.style.setProperty('--card-bg', '#fdf5e6');
+      } else {
+        document.documentElement.style.setProperty('--black-gradient', 'linear-gradient(145deg, #0a0a0a, #1a1a1a)');
+        document.documentElement.style.setProperty('--text-light', '#f1f1f1');
+        document.documentElement.style.setProperty('--bg-dark', '#111');
+        document.documentElement.style.setProperty('--card-bg', '#1b1b1b');
+      }
+    }
+  </script>
+</body>
+</html>
