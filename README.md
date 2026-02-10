@@ -14,13 +14,11 @@ Registry: Docker Hub
 
 🏗 Project Structure
 Plaintext
+
+<img width="671" height="167" alt="image" src="https://github.com/user-attachments/assets/8846fec2-cd79-41f3-bee0-4056e6528ca9" />
+
 .
-├── templates/          # Contains all website assets (index.html, CSS, etc.)
-│   ├── index.html      # Main landing page
-│   ├── background1.mp4 # Video assets
-│   └── profile.png     # Images
-├── Dockerfile          # Multi-stage build and Nginx configuration
-└── Jenkinsfile         # Pipeline as Code for automation
+
 🔄 CI/CD Pipeline Workflow
 The Jenkins pipeline is triggered automatically upon a git push to the main branch:
 
@@ -49,6 +47,6 @@ Bash
 docker build -t portfolio-local .
 
 # Run the container
-docker run -d -p 9090:80 --name my-portfolio portfolio-local
+docker run -d -p 9090:80 --name my-portfolio portfolio-local , 
 View your site at http://localhost:9090.
 
