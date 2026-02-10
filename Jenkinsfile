@@ -28,15 +28,22 @@ pipeline {
                 """
             }
         }
-
         stage('Deploy') {
             steps {
-                sh '''
+                // Use double quotes so Jenkins can inject the $Image_Name variable
+                sh """
+                # Pull the latest image to ensure we aren't using a cached stale version
+                docker pull $Image_Name:latest
+                
+                # Stop and remove existing container
                 docker stop portfolio || true
                 docker rm portfolio || true
-                docker run -d -p 9090:80 --name portfolio $Image_Name
-                '''
+                
+                # Run the new container
+                docker run -d -p 9090:80 --name portfolio $Image_Name:latest
+                """
             }
+        }
         }
     }
 }
