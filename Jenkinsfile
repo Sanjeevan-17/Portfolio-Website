@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DockerHub_Credentials = credentials('sanju1701')
-        DOCKER_IMAGE = "sanju1701/portfolio-website-static"
+        Image_Name = "sanju1701/portfolio-website-static"
     }
     stages {
         stage('Checkout') {
