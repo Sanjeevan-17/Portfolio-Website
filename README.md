@@ -47,6 +47,6 @@ Bash
 docker build -t portfolio-local .
 
 # Run the container
-docker run -d -p 9090:80 --name my-portfolio portfolio-local , 
-View your site at http://localhost:9090.
+docker run -d -p 8080:80 --name my-portfolio portfolio-local , 
+View your site at http://localhost:8080.
 
