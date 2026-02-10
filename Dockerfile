@@ -1,14 +1,18 @@
-# Use lightweight Nginx image
+# Use the lightweight Nginx Alpine image
 FROM nginx:alpine
 
-# 1. Remove the default Nginx static assets
+# Step 1: Remove any default files Nginx might have
 RUN rm -rf /usr/share/nginx/html/*
 
-# 2. Copy your portfolio files into the Nginx html directory
-# Note: We copy to the FOLDER path, not a filename
+# Step 2: Copy your files into the correct directory
+# Using '.' assumes your Dockerfile is in the same folder as index.html
 COPY . /usr/share/nginx/html/
 
-# Expose HTTP port
+# Step 3: Fix permissions (The 403 Forbidden Killer)
+# This ensures the Nginx user can actually read your files
+RUN chmod -R 755 /usr/share/nginx/html
+
+# Expose port 80
 EXPOSE 80
 
 # Start Nginx
