@@ -1,8 +1,12 @@
 # Use lightweight Nginx image
 FROM nginx:alpine
 
-# Copy all files into Nginx html folder
-COPY . /usr/share/nginx/index.html
+# 1. Remove the default Nginx static assets
+RUN rm -rf /usr/share/nginx/html/*
+
+# 2. Copy your portfolio files into the Nginx html directory
+# Note: We copy to the FOLDER path, not a filename
+COPY . /usr/share/nginx/html/
 
 # Expose HTTP port
 EXPOSE 80
