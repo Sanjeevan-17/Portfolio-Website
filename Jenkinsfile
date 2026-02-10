@@ -34,7 +34,7 @@ pipeline {
                 sh '''
                 docker stop portfolio || true
                 docker rm portfolio || true
-                docker run -d -p 9090:5000 --name portfolio $Image_Name
+                docker run -d -p 9090:80 --name portfolio $Image_Name
                 '''
             }
         }
