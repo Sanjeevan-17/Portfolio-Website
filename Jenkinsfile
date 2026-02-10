@@ -13,7 +13,10 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $Image_Name .'
+                sh """
+                docker build -t $Image_Name:latest .
+                docker tag $Image_Name:latest $Image_Name:$BUILD_NUMBER
+                """
             }
         }
         stage('Push to Docker Hub') {
