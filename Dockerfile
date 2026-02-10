@@ -1,19 +1,15 @@
-# Use the lightweight Nginx Alpine image
 FROM nginx:alpine
 
-# Step 1: Remove any default files Nginx might have
+# 1. Clean out any default files
 RUN rm -rf /usr/share/nginx/html/*
 
-# Step 2: Copy your files into the correct directory
-# Using '.' assumes your Dockerfile is in the same folder as index.html
-COPY . /usr/share/nginx/html/
+# 2. Copy everything FROM the templates folder into Nginx's root
+# This puts index.html exactly where Nginx expects it
+COPY templates/ /usr/share/nginx/html/
 
-# Step 3: Fix permissions (The 403 Forbidden Killer)
-# This ensures the Nginx user can actually read your files
+# 3. Fix permissions just in case
 RUN chmod -R 755 /usr/share/nginx/html
 
-# Expose port 80
 EXPOSE 80
 
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
